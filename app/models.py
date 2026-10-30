@@ -28,7 +28,7 @@ class User(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     phone: Mapped[str] = mapped_column(String(13), index=True, unique=True)
     full_name: Mapped[str | None] = mapped_column(String(100))
-    hashed_password: Mapped[str | None] = mapped_column(String(255))
+    hashed_password: Mapped[str | None] = mapped_column(String(255))  # None for users created via Telegram
     role: Mapped[UserRole] = mapped_column(Enum(UserRole, name="user_role"), default=UserRole.APPEALER)
     telegram_id: Mapped[int | None] = mapped_column(BigInteger, unique=True, index=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)

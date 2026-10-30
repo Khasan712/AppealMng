@@ -6,6 +6,7 @@ from app.config import settings
 
 engine = create_async_engine(settings.DATABASE_URL, echo=True)
 
+# Keep loaded attributes after commit: async sessions cannot lazy-load them later.
 SessionLocal = async_sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
 
 
